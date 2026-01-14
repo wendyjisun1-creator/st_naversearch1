@@ -8,7 +8,7 @@ def plot_trend_comparison(df):
     fig = px.line(df, x='period', y='ratio', color='keyword',
                   title='키워드별 쇼핑 검색 트렌드 비교 (2025)',
                   labels={'ratio': '검색 상대 비율', 'period': '날짜'},
-                  template='plotly_dark')
+                  template='plotly_white')
     fig.update_layout(hovermode='x unified')
     return fig
 
@@ -19,7 +19,7 @@ def plot_price_distribution(df, keyword):
                        title=f'[{keyword}] 가격 분포 분석',
                        labels={'lprice': '최저가 (원)'},
                        color_discrete_sequence=['#ff7f0e'],
-                       template='plotly_dark')
+                       template='plotly_white')
     return fig
 
 def plot_brand_share(df, keyword):
