@@ -15,64 +15,67 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# 커스텀 CSS (Glassmorphism & Gradient 스타일)
+# 커스텀 CSS (Premium Light & Clean 스타일)
 st.markdown("""
     <style>
-    @import url('https://fonts.googleapis.com/css2?family=Orbit&family=Outfit:wght@300;400;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600&display=swap');
     
     html, body, [class*="css"] {
         font-family: 'Outfit', sans-serif;
     }
     
     .stApp {
-        background: radial-gradient(circle at 50% 10%, #1a1c2c 0%, #0e1117 100%);
+        background-color: #fcfdfe;
     }
 
     /* 메트릭 카드 스타일 */
     [data-testid="stMetricValue"] {
         font-size: 2.2rem !important;
         font-weight: 600 !important;
-        color: #00d4ff !important;
+        color: #1e3a8a !important; /* Deep Blue */
     }
     
     /* 탭 디자인 커스텀 */
     .stTabs [data-baseweb="tab-list"] {
-        gap: 24px;
-        background-color: rgba(255, 255, 255, 0.05);
-        padding: 10px 20px;
-        border-radius: 15px;
+        gap: 20px;
+        background-color: #f1f5f9;
+        padding: 5px 15px;
+        border-radius: 12px;
     }
 
     .stTabs [data-baseweb="tab"] {
-        height: 50px;
-        white-space: pre-wrap;
+        height: 45px;
         background-color: transparent;
-        border-radius: 10px;
-        color: #888;
+        border-radius: 8px;
+        color: #64748b;
         font-weight: 400;
     }
 
     .stTabs [aria-selected="true"] {
-        background-color: rgba(0, 212, 255, 0.1);
-        color: #00d4ff !important;
+        background-color: #ffffff;
+        color: #2563eb !important;
         font-weight: 600;
-        border-bottom: 2px solid #00d4ff !important;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
     }
 
     /* 카드형 컨테이너 */
     .premium-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: #ffffff;
+        border: 1px solid #e2e8f0;
         padding: 25px;
-        border-radius: 20px;
-        box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
-        backdrop-filter: blur(4px);
+        border-radius: 16px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
         margin-bottom: 20px;
     }
     
     h1, h2, h3 {
-        color: #ffffff;
+        color: #1e293b;
         letter-spacing: -0.5px;
+        font-weight: 600;
+    }
+    
+    .stMarkdown p {
+        color: #475569;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -271,7 +274,7 @@ with tab_social:
         blog_timeline = blog_df['postdate'].value_counts().sort_index().reset_index()
         blog_timeline.columns = ['date', 'count']
         fig_area = px.area(blog_timeline, x='date', y='count', title="시점별 포스팅 빈도 분석",
-                           template='plotly_dark', color_discrete_sequence=['#00d4ff'])
+                           template='plotly_white', color_discrete_sequence=['#2563eb'])
         st.plotly_chart(fig_area, use_container_width=True)
         st.markdown('</div>', unsafe_allow_html=True)
     else:
